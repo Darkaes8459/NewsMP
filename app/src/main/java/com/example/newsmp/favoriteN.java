@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class favoriteN extends AppCompatActivity {
-
+    private long backPressedTime;
+    private Toast backToast;
+    boolean isPressed = false;
     ImageButton menu1, menu2, menu3, menu4, menu5, menu6;
     Button next, ignore;
 
@@ -87,11 +90,14 @@ public class favoriteN extends AppCompatActivity {
         next.setOnClickListener(view -> {
             Intent i = new Intent(favoriteN.this, MainActivity.class);
             startActivity(i);
+            finish();
         });
 
         ignore.setOnClickListener(view -> {
             Intent j = new Intent(favoriteN.this, MainActivity.class);
             startActivity(j);
+            finish();
         });
     }
+
 }

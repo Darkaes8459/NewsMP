@@ -22,6 +22,7 @@ public class SplashC extends AppCompatActivity {
         menu1.setOnClickListener(view -> {
             Intent i = new Intent(SplashC.this, com.example.newsmp.favoriteN.class);
             startActivity(i);
+            finish();
         });
     }
 }
