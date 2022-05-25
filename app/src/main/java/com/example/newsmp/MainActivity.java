@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,6 +24,27 @@ public class MainActivity extends AppCompatActivity implements SelectListener, V
     ProgressDialog dialog;
     Button b1,b2,b3,b4,b5,b6,b7;
     SearchView searchView;
+    private long backPressedTime;
+    private Toast backToast;
+    boolean isPressed = false;
+
+    @Override
+    public void onBackPressed() {
+        if (isPressed){
+            finishAffinity();
+            System.exit(0);
+
+        } else {
+            backToast = Toast.makeText(getBaseContext(),
+                    "Press back again to exit",
+                    Toast.LENGTH_SHORT);
+            backToast.show();
+            isPressed = true;
+        }
+        Runnable runnable = () -> isPressed = false;
+        new Handler().postDelayed(runnable, 2000);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
